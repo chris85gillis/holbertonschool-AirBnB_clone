@@ -6,17 +6,26 @@ from datetime import datetime
 
 class BaseModel:
     """Represents the BaseModel of the HBnB project."""
-    
-    def __init__(self):
-        """Initialize a new BaseModel."""
+
+    def __init__(self, *args, **kwargs):
+        """initialize new base class
+
+        Args: key/value pair of attributes
+        """
         tform = "%Y-%m-%dT%H:%M:%S.%f"
         self.id = str(uuid4())
         self.created_at = datetime.today()
         self.updated_at = datetime.today()
+        if kwargs:
+            for key, value in kwargs.items():
+                if key == "created_at" or key == "updated_at":
+                    setattr(self, key, datetime.strptime(value, tform))
+                else:
+                    setattr(self, key, value)
 
     def save(self):
         """Update updated_at with the current datetime."""
-        self.update_at = datetime.today()
+        self.updated_at = datetime.today()
 
     def to_dict(self):
         """Return the dictionary of the BaseModel instance.
