@@ -8,17 +8,20 @@ class BaseModel:
     """Represents the BaseModel of the HBnB project."""
 
     def __init__(self, *args, **kwargs):
-        """Initialize a new BaseModel."""
-        if kwargs:
-            for key, value in kwargs.items():
-                if key is == "created_at" or key == "updated_at":
-                    continue
-                setattr(self, key, value)
+        """initialize new base class
 
+        Args: key/value pair of attributes
+        """
         tform = "%Y-%m-%dT%H:%M:%S.%f"
         self.id = str(uuid4())
         self.created_at = datetime.today()
         self.updated_at = datetime.today()
+        if kwargs:
+            for key, value in kwargs.items():
+                if key == "created_at" or key == "updated_at":
+                    setattr(self, key, datetime.strptime(value, tform))
+                else:
+                    setattr(self, key, value)
 
     def save(self):
         """Update updated_at with the current datetime."""
