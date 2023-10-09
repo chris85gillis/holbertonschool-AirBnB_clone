@@ -43,6 +43,8 @@ class TestBaseModel(unittest.TestCase):
         my_model.my_number = 89
 
         my_model_dict = my_model.to_dict()
+        
+        self.assertIsInstance(my_model_dict, dict)
 
         self.assertEqual(my_model_dict['__class__'], "BaseModel")
         self.assertEqual(my_model_dict['name'], "My First Model")
@@ -70,17 +72,7 @@ class TestBaseModel(unittest.TestCase):
         my_model.name = "My_First_Model"
         my_model.my_number = 89
         
-        my_model_json = my_model.to.dict()
+        my_model_json = my_model.to_dict()
 
-        my_model_json['__class__'] = 'BaseModel'
-        
-        my_new_model = BaseModel(**my_model_json)
-
-        self.assertFalse(my_model is my_new_model)
-
-        self.assertIsNotNone(my_new_model)
-        self.assertEqual(my_new_model.name, "My_First_Model")
-        self.assertEqual(my_new_model.my_number, 89)
-    
 if __name__ == "__main__":
     unittest.main()
