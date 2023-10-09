@@ -12,13 +12,13 @@ class FileStorage:
     __objects = {}
 
     def save(self):
-        """serilizes data to json file
+        """serializes data to json file
         """
         data = {}
-        for key, value in self.__file_path.items():
+        for key, value in self.__objects.items():
             data[key] = value.to_dict()
-            with open("self.__objects", "w", encoding="utf-8") as file:
-                json.dump(data, self.__file_path)
+            with open(self.__file_path, "w", encoding="utf-8") as file:
+                json.dump(data, file)
 
     def all(self):
         """way to access all loaded and reloaded in filestorage instance
