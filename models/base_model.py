@@ -2,6 +2,7 @@
 """Defines the BaseModel class."""
 from uuid import uuid4
 from datetime import datetime
+import models
 
 
 class BaseModel:
@@ -11,9 +12,7 @@ class BaseModel:
         """initialize new base class
 
         Args:
-
             *args: unused
-
             **kwargs (dict): key/value pair of attributes
         """
         tform = "%Y-%m-%dT%H:%M:%S.%f"
@@ -30,6 +29,7 @@ class BaseModel:
     def save(self):
         """Update updated_at with the current datetime."""
         self.updated_at = datetime.today()
+        models.storage.save()
 
     def to_dict(self):
         """Return the dictionary of the BaseModel instance.
