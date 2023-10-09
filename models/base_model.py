@@ -10,7 +10,11 @@ class BaseModel:
     def __init__(self, *args, **kwargs):
         """initialize new base class
 
-        Args: key/value pair of attributes
+        Args:
+
+            *args: unused 
+
+            **kwargs (dict): key/value pair of attributes
         """
         tform = "%Y-%m-%dT%H:%M:%S.%f"
         self.id = str(uuid4())
