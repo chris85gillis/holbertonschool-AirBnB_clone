@@ -12,7 +12,7 @@ class BaseModel:
 
         Args:
 
-            *args: unused 
+            *args: unused
 
             **kwargs (dict): key/value pair of attributes
         """
