@@ -3,7 +3,8 @@
 
 import json
 import os
-from models
+from models.base_model import BaseModel
+
 
 class FileStorage:
     """ class interacting w json files
