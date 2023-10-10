@@ -9,8 +9,9 @@ from models.base_model import BaseModel
 class FileStorage:
     """ class interacting w json files
     """
-    __file_path = "file.json"
-    __objects = {}
+    def __init__(self):
+        self.__file_path = "file.json"
+        self.__objects = {}
 
     def save(self):
         """serializes data to json file
@@ -27,30 +28,30 @@ class FileStorage:
         Returns:
             __object: dictionary containging all obj stores
         """
-        return FileStorage.__objects
+        return self.__objects
 
     def new(self, obj):
-        """new _summary_
-
-        Args:
-            obj (_type_): _description_
+        """Add a new object to the storage.
         """
-        named_class = obj.__class__.__name__
-        object_id = obj.id
-        key = "{}, {}".format(named_class, object_id)
+        key = "{}, {}".format(obj.__class__.__name__, obj.id)
         self.__objects[key] = obj
 
     def reload(self):
         """reload: deserilizes data back to json file
         """
-        if os.path.exists(self.__file_path):
+        if os.path.isfile(self.__file_path):
             with open(self.__file_path, "r", encoding="utf-8") as file:
                 data = json.load(file)
-                for key, value in data.items():
-                    named_class, obj_id = key.split(", ")
-                    inst_class = eval(named_class)
-                    obj = inst_class(**value)
-                    obj.id = obj_id
+                for key, obj_data in data.items():
+                    class_name, obj_id = key.split('.')
+                    obj = models[class_name](**obj_data)
                     self.__objects[key] = obj
-        else:
-            pass
+
+
+storage = FileStorage()
+"""create an instance of the storage class"""
+
+models = {
+    'BaseModel': BaseModel
+    """add other model classes here"""
+}
