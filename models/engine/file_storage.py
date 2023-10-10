@@ -3,6 +3,13 @@
 
 import json
 import os
+from models.user import User
+from models.base_model import BaseModel
+
+classes = {
+    'BaseModel': BaseModel,
+    'User': User,
+}
 
 
 class FileStorage:
@@ -19,12 +26,14 @@ class FileStorage:
             data[key] = value.to_dict()
             with open(self.__file_path, "w", encoding="utf-8") as file:
                 json.dump(data, file)
+
     def all(self):
         """way to access all loaded and reloaded in filestorage instance
         Returns:
             __object: dictionary containging all obj stores
         """
         return FileStorage.__objects
+
     def new(self, obj):
         """new _summary_
         Args:
@@ -34,6 +43,7 @@ class FileStorage:
         object_id = obj.id
         key = "{}, {}".format(named_class, object_id)
         self.__objects[key] = obj
+
     def reload(self):
         """reload: deserilizes data back to json file
         """
