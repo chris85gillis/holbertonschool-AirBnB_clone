@@ -3,12 +3,11 @@
 
 import json
 import os
-from models.user import User
-from models.base_model import BaseModel
+
 
 classes = {
-    'BaseModel': BaseModel,
-    'User': User,
+    'BaseModel',
+    'User', 
 }
 
 
