@@ -11,6 +11,7 @@ from models.base_model import BaseModel
 class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb) "
 
+
     def do_quit(self, arg):
         """Quit command to exit the program"""
         return True
@@ -20,7 +21,7 @@ class HBNBCommand(cmd.Cmd):
         print("")  # Print a newline for better formatting
         return True
 
-    def emptyline(self):
+    def do_emptyline(self):
         """Do nothing on an empty line"""
         pass
 
@@ -43,7 +44,7 @@ class HBNBCommand(cmd.Cmd):
             except Exception as e:
                 print(e)
 
-    def show(self, args):
+    def do_show(self, args):
         args_list = args.split()
         if not args_list:
             print("** class name missing **")
@@ -68,7 +69,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** no instance found **")
 
-    def destroy(self, args):
+    def do_destroy(self, args):
         args_list = args.split()
         if not args_list:
             print("** class name missing **")
@@ -94,7 +95,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** no instance found **")
 
-    def all(self, args):
+    def do_all(self, args):
         args_list = args.split()
         if not args_list:
             print("** class name missing **")
@@ -115,7 +116,7 @@ class HBNBCommand(cmd.Cmd):
             instances = BaseModel.all()
         print([str(obj) for obj in instances.values()])
 
-    def update(self, args):
+    def do_update(self, args):
         args_list = args.split()
         if not args_list:
             print("** class name missing **")

@@ -23,7 +23,7 @@ class FileStorage:
         data = {}
         for key, value in self.__objects.items():
             data[key] = value.to_dict()
-            with open(self.__file_path, "w", encoding="utf-8") as file:
+            with open(self.file_path, "w", encoding="utf-8") as file:
                 json.dump(data, file)
 
     def all(self):
