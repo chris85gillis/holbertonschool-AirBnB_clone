@@ -86,7 +86,7 @@ $
 
 ## Flowchart
 
-![flowchart](https://s3.eu-west-3.amazonaws.com/hbtn.intranet/uploads/medias/2018/6/815046647d23428a14ca.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MYA5JM5DUTZGMZG/20231010/eu-west-3/s3/aws4_request&X-Amz-Date=20231010T172446Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=dc9c4937cb318ff71cc12d6f84748ecc24178777f5492948b1b3e70ace167491)
+![download](https://github.com/chris85gillis/holbertonschool-AirBnB_clone/assets/126268722/82b38319-46b4-4402-8655-79a7a0588473)
 
 
 
